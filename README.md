@@ -127,4 +127,7 @@ npx cypress run --spec "cypress/e2e/login-completo.cy.js"
 
 
 Última atualização 14/11/2025
+
+---
+
 Este projeto faz parte dos estudos de QA Automation utilizando Cypress.
