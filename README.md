@@ -263,16 +263,23 @@ ls cypress/videos/fatura.cy.js.mp4
 ls cypress/downloads/invoice.txt
 ```
 
-🚧 Próximos Passos
+🤝 Contribuição
 
-Melhorias Planejadas
+1. Fork o projeto
 
-- Implementar Page Objects para melhor organização
+2. Crie uma branch para sua feature (git checkout -b feature/AmazingFeature)
 
-- Adicionar testes de API
+3. Commit suas mudanças (git commit -m 'Add some AmazingFeature')
 
-- Criar testes para mobile
+4. Push para a branch (git push origin feature/AmazingFeature)
 
+5. Abra um Pull Request
 
-Última atualização 14/11/2025
-Este projeto faz parte dos estudos de QA Automation utilizando Cypress.
+📄 Licença
+Este projeto é para fins educacionais e de portfólio.
+
+---
+
+📅 Última atualização: 18/11/2025
+👨‍💻 Mantido por: Thayse Dias
+🎯 Objetivo: Este projeto faz parte dos estudos de QA Automation utilizando Cypress e demonstra habilidades em automação de testes end-to-end seguindo boas práticas de organização e manutenibilidade.
