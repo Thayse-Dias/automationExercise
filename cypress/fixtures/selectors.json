@@ -1,0 +1,68 @@
+{
+  "homePage": {
+    "logo": "img[alt='Website for automation practice']",
+    "firstProduct": ".features_items .product-image-wrapper",
+    "addToCartButton": ".add-to-cart",
+    "viewCartLink": "u"
+  },
+  "cartPage": {
+    "activeTab": "li.active",
+    "checkoutButton": ".check_out"
+  },
+  "modal": {
+    "modalBody": ".modal-body",
+    "loginLink": "a[href='/login']"
+  },
+  "signupPage": {
+    "nameInput": "input[data-qa='signup-name']",
+    "emailInput": "input[data-qa='signup-email']",
+    "signupButton": "button[data-qa='signup-button']"
+  },
+  "accountCreationForm": {
+    "genderMrs": "#id_gender2",
+    "password": "input[data-qa='password']",
+    "days": "select[data-qa='days']",
+    "months": "select[data-qa='months']",
+    "years": "select[data-qa='years']",
+    "firstName": "input[data-qa='first_name']",
+    "lastName": "input[data-qa='last_name']",
+    "company": "input[data-qa='company']",
+    "address": "input[data-qa='address']",
+    "address2": "input[data-qa='address2']",
+    "country": "select[data-qa='country']",
+    "state": "input[data-qa='state']",
+    "city": "input[data-qa='city']",
+    "zipcode": "input[data-qa='zipcode']",
+    "mobileNumber": "input[data-qa='mobile_number']",
+    "createAccountButton": "button[data-qa='create-account']"
+  },
+  "accountCreated": {
+    "message": "h2[data-qa='account-created']",
+    "continueButton": "a[data-qa='continue-button']"
+  },
+  "loggedIn": {
+    "userInfo": "li > a"
+  },
+  "cart": {
+    "cartLink": "a[href='/view_cart']"
+  },
+  "checkout": {
+    "addressDetails": "#address_delivery",
+    "reviewOrder": "#cart_info",
+    "commentTextarea": "textarea[name='message']",
+    "placeOrderButton": "a[href='/payment']"
+  },
+  "payment": {
+    "nameOnCard": "input[data-qa='name-on-card']",
+    "cardNumber": "input[data-qa='card-number']",
+    "cvc": "input[data-qa='cvc']",
+    "expiryMonth": "input[data-qa='expiry-month']",
+    "expiryYear": "input[data-qa='expiry-year']",
+    "payButton": "button[data-qa='pay-button']"
+  },
+  "orderSuccess": {
+    "successMessage": "Congratulations! Your order has been confirmed!",
+    "downloadInvoice": "Download Invoice",
+    "continueButton": "Continue"
+  }
+}

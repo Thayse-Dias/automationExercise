@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:cadastro": "cypress run --spec \"cypress/e2e/cadastro.cy.js\"",
-    "test:login-completo": "cypress run --spec \"cypress/e2e/login-completo.cy.js\""
+    "test:login-completo": "cypress run --spec \"cypress/e2e/login-completo.cy.js\"",
+    "test:video": "cypress run --spec \"cypress/e2e/fatura.cy.js\" --browser chrome --headless"
   },
   "keywords": [],
   "author": "",
