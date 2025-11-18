@@ -271,48 +271,8 @@ Melhorias Planejadas
 
 - Adicionar testes de API
 
-- Configurar integração CI/CD (GitHub Actions)
+- Criar testes para mobile
 
-- Adicionar relatórios Allure ou Mochawesome
 
-- Implementar testes para mobile viewport
-
-- Adicionar testes de performance
-
-- Criar testes de acessibilidade
-
-Expansão de Testes
-
-- Testes de busca e filtros de produtos
-
-- Testes de carrinho com múltiplos produtos
-
-- Testes de recuperação de senha
-
-- Testes de atualização de perfil
-
-- Testes de avaliação de produtos
-
-🤝 Contribuição
-
-1.Fork o projeto
-
-2.Crie uma branch para sua feature (git checkout -b feature/AmazingFeature)
-
-3.Commit suas mudanças (git commit -m 'Add some AmazingFeature')
-
-4.Push para a branch (git push origin feature/AmazingFeature)
-
-5.Abra um Pull Request
-
-📄 Licença
-
-Este projeto é para fins educacionais e de portfólio.
-
----
-
-📅 Última atualização: 18/11/2025
-👨‍💻 Mantido por: Thayse Dias
-🎯 Objetivo: Este projeto faz parte dos estudos de QA Automation utilizando Cypress e demonstra habilidades em automação de testes end-to-end seguindo boas práticas de organização e manutenibilidade.
-
-Para dúvidas ou sugestões, entre em contato através do LinkedIn.
+Última atualização 14/11/2025
+Este projeto faz parte dos estudos de QA Automation utilizando Cypress.
