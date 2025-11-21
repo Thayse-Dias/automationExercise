@@ -40,16 +40,17 @@ automationExercise/
 │   ├── e2e/
 │   │   ├── cadastro.cy.js          # Teste de cadastro de usuário
 │   │   ├── fatura.cy.js            # Teste completo de compra e download de fatura
-│   │   └── login-completo.cy.js    # Teste de login completo
+│   │   ├── login-completo.cy.js    # Teste de login completo
+│   │   └── avaliacao.cy.js         # 🆕 Teste de adição de avaliação ao produto
 │   ├── fixtures/
 │   │   ├── example.json            # Dados de exemplo
-│   │   └── selectors.json          # 🆕 Seletores centralizados para todos os testes
+│   │   └── selectors.json          # Seletores centralizados para todos os testes
 │   ├── support/
 │   │   ├── commands.js             # Comandos customizados do Cypress
 │   │   └── e2e.js                  # Configurações de suporte para testes e2e
 │   ├── downloads/                  # Arquivos baixados (ex.: invoice.txt)
 │   ├── screenshots/                # Capturas de tela automáticas em caso de falhas
-│   └── videos/                     # 🆕 Gravações automáticas dos testes em execução
+│   └── videos/                     # Gravações automáticas dos testes em execução
 ├── cypress.config.js               # Configuração principal do Cypress
 ├── package.json                    # Dependências e scripts do projeto
 ├── README.md                       # Documentação do projeto
@@ -109,6 +110,9 @@ npx cypress run --spec "cypress/e2e/login-completo.cy.js"
 # 🆕 Executar teste de fluxo de compra com fatura
 npx cypress run --spec "cypress/e2e/fatura.cy.js" --browser chrome
 
+# 🆕 Executar teste de avaliação de produto
+npx cypress run --spec "cypress/e2e/avaliacao.cy.js" --browser chrome
+
 # Executar com gravação de vídeo (configuração automática)
 npx cypress run --spec "cypress/e2e/fatura.cy.js" --browser chrome --headed
 ```
@@ -116,10 +120,11 @@ Scripts Personalizados (package.json)
 ```json
 {
   "scripts": {
-    "test": "cypress run",
-    "test:headed": "cypress open",
-    "test:fatura": "cypress run --spec 'cypress/e2e/fatura.cy.js'",
-    "test:video": "cypress run --spec 'cypress/e2e/fatura.cy.js' --browser chrome"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:cadastro": "cypress run --spec \"cypress/e2e/cadastro.cy.js\"",
+    "test:login-completo": "cypress run --spec \"cypress/e2e/login-completo.cy.js\"",
+    "teste:avaliacao": "cypress run --spec \"cypress/e2e/avaliacao.cy.js\"",
+    "test:video": "cypress run --spec \"cypress/e2e/fatura.cy.js\" --browser chrome --headless"
   }
 }
 ```
@@ -163,6 +168,20 @@ Scripts Personalizados (package.json)
 
 ✅ Exclusão da conta
 
+4. 🆕 Adição de Avaliação ao Produto (avaliacao.cy.js)
+
+✅ Navegação para a página de produtos
+
+✅ Seleção de um produto para visualizar detalhes
+
+✅ Verificação da seção de avaliação
+
+✅ Preenchimento do formulário de avaliação (nome, email, comentário)
+
+✅ Envio da avaliação
+
+✅ Validação de mensagem de sucesso
+
 🔧 Configuração do Cypress
 
 O arquivo cypress.config.js está configurado com:
@@ -198,6 +217,8 @@ Fluxos de Negócio
 - Pagamento e confirmação de pedido
 
 - Download de faturas
+
+- 🆕 Avaliação de produtos
 
 Elementos de UI
 
@@ -280,6 +301,6 @@ Este projeto é para fins educacionais e de portfólio.
 
 ---
 
-📅 Última atualização: 18/11/2025
+📅 Última atualização: 21/11/2025
 👨‍💻 Mantido por: Thayse Dias
 🎯 Objetivo: Este projeto faz parte dos estudos de QA Automation utilizando Cypress e demonstra habilidades em automação de testes end-to-end seguindo boas práticas de organização e manutenibilidade.

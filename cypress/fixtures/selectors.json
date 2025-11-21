@@ -64,5 +64,19 @@
     "successMessage": "Congratulations! Your order has been confirmed!",
     "downloadInvoice": "Download Invoice",
     "continueButton": "Continue"
+  },
+   "productsPage": {
+    "productsLink": "a[href='/products']",
+    "allProductsTitle": "h2.title.text-center",
+    "viewProductButton": "a:contains('Ver Produto')",
+    "firstProduct": ".features_items .product-image-wrapper"
+  },
+  "productDetailPage": {
+    "reviewTab": "a[href='#reviews']",
+    "reviewName": "#name",
+    "reviewEmail": "#email", 
+    "reviewText": "#review",
+    "reviewSubmit": "#button-review",
+    "successMessage": ".alert-success"
   }
 }
