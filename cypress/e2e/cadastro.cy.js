@@ -26,7 +26,7 @@ describe('Automation Exercise - Cadastro', () => {
     successMessage: '[data-qa="account-created"]',
     continueButton: '[data-qa="continue-button"]'
   }
-
+  // Variável para armazenar o email criado
   let createdUserEmail = '';
 
   beforeEach(() => {
@@ -74,12 +74,12 @@ describe('Automation Exercise - Cadastro', () => {
     cy.get(selectorList.state).type('California')
     cy.get(selectorList.city).type('Los Angeles')
     cy.get(selectorList.zipcode).type('90001')
-    cy.get(selectorList.mobileNumber).type('1234567890') // Removido o +
+    cy.get(selectorList.mobileNumber).type('1234567890') 
     
     // 5. Criar conta com timeout aumentado
     cy.get(selectorList.createAccountButton).click()
 
-    // 6. Verificar sucesso - com verificações robustas
+    // 6. Verificar sucesso 
     cy.get('body').then(($body) => {
       // Verificação múltipla
       if ($body.find(selectorList.successMessage).length > 0) {

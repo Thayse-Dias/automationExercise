@@ -87,6 +87,9 @@ npm install typescript @types/node --save-dev
 # Criar tsconfig.json
 npx tsc --init
 ```
+# Comando para listar todos os arquivos exixtentes na pasta e2e
+
+ls cypress/e2e/
 
 🧪 Executando os Testes
 
@@ -181,6 +184,28 @@ Scripts Personalizados (package.json)
 ✅ Envio da avaliação
 
 ✅ Validação de mensagem de sucesso
+
+5. Adicionar produtos ao carrinho
+
+✅ Abrir navegador
+
+✅ Acessar URL
+
+✅ Validar página inicial
+
+✅ Clicar em “Produtos”
+
+✅ Adicionar 1º produto
+
+✅ Continuar comprando
+
+✅ Adicionar 2º produto
+
+✅ Abrir carrinho
+
+✅ Validar que ambos os produtos estão no carrinho
+
+✅ Validar preço, quantidade e total
 
 🔧 Configuração do Cypress
 

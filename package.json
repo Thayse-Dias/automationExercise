@@ -5,18 +5,45 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+
+    "cy:run": "cypress run",
+    "cy:run:chrome": "cypress run --browser chrome",
+    "cy:run:headed": "cypress run --headed --browser chrome",
+
     "test:cadastro": "cypress run --spec \"cypress/e2e/cadastro.cy.js\"",
     "test:login-completo": "cypress run --spec \"cypress/e2e/login-completo.cy.js\"",
-    "teste:avaliacao": "cypress run --spec \"cypress/e2e/avaliacao.cy.js\"",
-    "test:video": "cypress run --spec \"cypress/e2e/fatura.cy.js\" --browser chrome --headless"
+    "test:avaliacao-tradicional": "cypress run --spec \"cypress/e2e/avaliacao.cy.js\"",
+    "test:bdd": "cypress run --spec \"cypress/e2e/features/**/*.feature\"",
+    "test:avaliacao-bdd": "npx cypress run --spec \"cypress/e2e/features/avaliacao-produto.feature\" --browser chrome",
+
+    "combine-reports": "npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/mochawesome-combined.json",
+    "generate-report": "npx marge cypress/reports/mochawesome-combined.json --reportDir cypress/reports/html --inline --charts true --reportPageTitle \"AutomationExercise - Relatório de Testes\" --reportTitle \"Relatório E2E - AutomationExercise\"",
+    "delete-old-reports": "rm -rf cypress/reports/mochawesome/*.json cypress/reports/mochawesome-combined.json || true",
+
+    "cy:run:report": "npm run delete-old-reports && cypress run && npm run combine-reports && npm run generate-report",
+    "cy:run:chrome:report": "npm run delete-old-reports && cypress run --browser chrome && npm run combine-reports && npm run generate-report",
+    "cy:run:headed:report": "npm run delete-old-reports && cypress run --headed --browser chrome && npm run combine-reports && npm run generate-report",
+
+    "cypress:open": "cypress open"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@types/node": "^24.10.1",
-    "cypress": "^15.6.0",
-    "typescript": "^5.9.3"
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "cypress": "^13.6.6",
+    "esbuild": "^0.20.0",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.0",
+    "mochawesome-report-generator": "^6.3.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": [
+      "cypress/e2e/step-definitions/**/*.js"
+    ],
+    "filterSpecs": true,
+    "omitFiltered": true
   }
 }

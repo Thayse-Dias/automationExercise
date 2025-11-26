@@ -1,0 +1,70 @@
+# .github/workflows/cypress.yml
+name: Cypress E2E Tests
+
+# Quando rodar
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  # Permite rodar manualmente no GitHub
+  workflow_dispatch:
+
+jobs:
+  cypress-tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        # Roda 3 containers em paralelo (você pode aumentar depois)
+        containers: [1, 2, 3]
+
+    steps:
+      # 1. Checkout do código
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Configura Node.js (versão que você usa localmente)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'          # você está usando Node 22.12.0
+          cache: 'npm'
+
+      # 3. Instala as dependências
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Instala o Cypress binário (garante versão correta)
+      - name: name: Cypress install
+        run: npx cypress install
+
+      # 5. Roda TODOS os testes em paralelo (BDD + tradicionais)
+      - name: Run Cypress Tests
+        run: npx cypress run --browser chrome --headless
+        continue-on-error: true   # continua gravando vídeo mesmo se falhar
+
+      # 6. Publica vídeos e screenshots como artefatos (sempre!)
+      - name: Upload test artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos-and-screenshots-${{ matrix.containers }}
+          path: |
+            cypress/videos/
+            cypress/screenshots/
+          retention-days: 15
+
+      # 7. (Opcional) Gera relatório bonito em HTML
+      - name: Generate Mochawesome Report
+        if: always()
+        run: npx mochawesome-merge cypress/reports/mochawesome/*.json > mochawesome.json && npx marge mochawesome.json
+
+      - name: Upload HTML Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-report
+          path: mochawesome-report/
+          retention-days: 30
