@@ -10,60 +10,52 @@ on:
 jobs:
   cypress-tests:
     runs-on: ubuntu-latest
-
     strategy:
       fail-fast: false
       matrix:
-        containers: [1, 2, 3]   # roda 3 em paralelo (pode aumentar depois)
+        containers: [1, 2, 3]
 
     steps:
-      # 1. Checkout do código
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Configura Node.js 22
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
 
-      # 3. Instala dependências
       - name: Install dependencies
         run: npm ci
 
-      # 4. Instala binário do Cypress
       - name: Install Cypress
         run: npx cypress install
 
-      # 5. Roda todos os testes (BDD + .cy.js)
       - name: Run Cypress Tests
         run: npx cypress run --browser chrome --headless
-        continue-on-error: true   # grava vídeo mesmo se falhar
+        continue-on-error: true
 
-      # 6. Salva vídeos e screenshots sempre
       - name: Upload videos and screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-artifacts-${{ matrix.containers }}
+          name: cypress-artifacts-${{ matrix.containers }}   # ← cada container tem nome diferente
           path: |
             cypress/videos/
             cypress/screenshots/
           retention-days: 15
 
-      # 7. Gera relatório Mochawesome lindo
       - name: Generate Mochawesome Report
         if: always()
         run: |
-          npx mochawesome-merge cypress/reports/mochawesome/*.json > mochawesome.json
-          npx marge mochawesome.json --reportDir mochawesome-report --inline
+          npx mochawesome-merge cypress/reports/mochawesome/*.json > mochawesome.json || echo "No JSON files"
+          npx marge mochawesome.json --reportDir mochawesome-report --inline || echo "Report generated with warnings"
 
-      # 8. Publica o relatório HTML
       - name: Upload HTML Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: html-report
+          name: html-report-${{ matrix.containers }}   # ← AQUI ESTAVA O PROBLEMA! Agora cada container tem seu próprio relatório
           path: mochawesome-report/
           retention-days: 30
+          
