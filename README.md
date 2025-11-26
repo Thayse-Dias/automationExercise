@@ -85,7 +85,12 @@ npm install cypress --save-dev
 npm install typescript @types/node --save-dev
 
 # Criar tsconfig.json
+```bash
 npx tsc --init
+```
+# Abrir o Jenkins
+```bash
+docker start jenkins-cypress
 ```
 # Comando para listar todos os arquivos exixtentes na pasta e2e
 

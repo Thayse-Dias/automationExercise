@@ -11,7 +11,6 @@ pipeline {
         }
         stage('Run Cypress + Report') {
             steps {
-                // ← ESSA É A ÚNICA LINHA QUE MUDOU
                 sh 'npm run cy:run:chrome:report || exit 0'
             }
         }
