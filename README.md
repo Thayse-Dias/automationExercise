@@ -1,61 +1,75 @@
 🧪 Projeto de Automação de Testes - Automation Exercise
 
-Este projeto contém testes automatizados para o site Automation Exercise utilizando Cypress como ferramenta de automação, seguindo as melhores práticas de organização e manutenibilidade.
+Este projeto contém testes automatizados para o site Automation Exercise utilizando Cypress como ferramenta de automação, com geração de relatórios detalhados usando Mochawesome.
 
-https://img.shields.io/badge/Cypress-12.0.0-brightgreen
+https://img.shields.io/badge/Cypress-13.6.6-brightgreen
 https://img.shields.io/badge/Node.js-16+-green
 https://img.shields.io/badge/QA-Automation-blue
 
 📋 Sobre o Projeto
-Este projeto implementa testes automatizados end-to-end para o site Automation Exercise, uma plataforma dedicada à prática de automação de testes. O projeto segue uma arquitetura organizada com separação de responsabilidades.
+Este projeto implementa testes automatizados end-to-end para o site Automation Exercise, uma plataforma dedicada à prática de automação de testes. O projeto inclui relatórios HTML detalhados para análise dos resultados.
+
+---
 
 ✨ Características Principais
 
-- Organização com Fixtures: Seletores centralizados para fácil manutenção
+✅ Organização com Fixtures: Seletores centralizados para fácil manutenção
 
-- Gravação de Vídeos: Captura automática da execução dos testes
+✅ Relatórios Mochawesome: Relatórios HTML detalhados e combinados
 
-- Screenshots em Falhas: Evidências visuais para debugging
+✅ Gravação de Vídeos: Captura automática da execução dos testes
 
-- Dados Dinâmicos: Geração automática de emails únicos
+✅ Screenshots em Falhas: Evidências visuais para debugging
 
-- Configuração Robusta: Timeouts e configurações otimizadas
+✅ Dados Dinâmicos: Geração automática de emails únicos
+
+✅ Configuração Robusta: Timeouts e configurações otimizadas
+
+---
 
 🚀 Tecnologias Utilizadas
 
-- Cypress 15.6.0 - Framework de automação end-to-end
+- Cypress - Framework de automação end-to-end
 
-- JavaScript ES6+ - Linguagem de programação
+- JavaScript - Linguagem de programação
 
-- Node.js 22.12.0 - Ambiente de execução
+- Node.js - Ambiente de execução
 
 - npm - Gerenciador de pacotes
 
 - Git - Controle de versão
 
+---
+
 📁 Estrutura do Projeto
 ```text
 automationExercise/
+├── .github/workflows/
+│   └── cypress.yml                 # GitHub Actions workflow
 ├── cypress/
 │   ├── e2e/
 │   │   ├── cadastro.cy.js          # Teste de cadastro de usuário
 │   │   ├── fatura.cy.js            # Teste completo de compra e download de fatura
 │   │   ├── login-completo.cy.js    # Teste de login completo
-│   │   └── avaliacao.cy.js         # 🆕 Teste de adição de avaliação ao produto
+│   │   ├── avaliacao.cy.js         # Teste de adição de avaliação ao produto
+│   │   ├── add_produto_car.cy.js   # Teste de adicionar produto ao carrinho
+│   │   └── adicionarAvaliacao.cy.js # Teste de adicionar avaliação
 │   ├── fixtures/
 │   │   ├── example.json            # Dados de exemplo
-│   │   └── selectors.json          # Seletores centralizados para todos os testes
+│   │   └── selectors.json          # Seletores centralizados
 │   ├── support/
 │   │   ├── commands.js             # Comandos customizados do Cypress
-│   │   └── e2e.js                  # Configurações de suporte para testes e2e
+│   │   └── e2e.js                  # Configurações de suporte
 │   ├── downloads/                  # Arquivos baixados (ex.: invoice.txt)
-│   ├── screenshots/                # Capturas de tela automáticas em caso de falhas
-│   └── videos/                     # Gravações automáticas dos testes em execução
+│   ├── screenshots/                # Capturas de tela automáticas
+│   ├── videos/                     # Gravações automáticas
+│   └── reports/                    # Relatórios de teste (mochawesome)
 ├── cypress.config.js               # Configuração principal do Cypress
 ├── package.json                    # Dependências e scripts do projeto
-├── README.md                       # Documentação do projeto
-└── tsconfig.json                   # Configuração do TypeScript (opcional)
+└── README.md                       # Documentação do projeto
 ```
+---
+
 ⚙️ Configuração do Ambiente
 
 1. Pré-requisitos
@@ -67,38 +81,13 @@ npm --version     # Deve ser 8+
 
 2. Instalação do Projeto
 ```bash
-# Clonar o repositório (se aplicável)
-git clone <url-do-repositorio>
-
-# Navegar para o diretório
-cd automationExercise
-
 # Instalar dependências
 npm install
 
-# Instalar Cypress (se necessário)
-npm install cypress --save-dev
+# Instalar Cypress 
+npx cypress install
 ```
-3. Instalação do TypeScript (Opcional)
-```bash
-# Instalar TypeScript para desenvolvimento
-npm install typescript @types/node --save-dev
-
-# Criar tsconfig.json
-```bash
-npx tsc --init
-```
-# Abrir o Jenkins
-1. Abre o docker
-```bash
-docker start jenkins-cypress
-```
-# Senha do Email configurado no Jenkins
-Login: thayse.dias@gmail.com
-senha: qeaz swub afci jblb
-# Comando para listar todos os arquivos exixtentes na pasta e2e
-
-ls cypress/e2e/
+---
 
 🧪 Executando os Testes
 
@@ -107,39 +96,8 @@ Interface Gráfica do Cypress
 # Abrir interface do Cypress
 npx cypress open
 ```
+---
 
-Execução em Modo Headless
-```bash
-# Executar todos os testes
-npx cypress run
-
-# Executar teste específico de cadastro
-npx cypress run --spec "cypress/e2e/cadastro.cy.js"
-
-# Executar teste específico de login
-npx cypress run --spec "cypress/e2e/login-completo.cy.js"
-
-# 🆕 Executar teste de fluxo de compra com fatura
-npx cypress run --spec "cypress/e2e/fatura.cy.js" --browser chrome
-
-# 🆕 Executar teste de avaliação de produto
-npx cypress run --spec "cypress/e2e/avaliacao.cy.js" --browser chrome
-
-# Executar com gravação de vídeo (configuração automática)
-npx cypress run --spec "cypress/e2e/fatura.cy.js" --browser chrome --headed
-```
-Scripts Personalizados (package.json)
-```json
-{
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "test:cadastro": "cypress run --spec \"cypress/e2e/cadastro.cy.js\"",
-    "test:login-completo": "cypress run --spec \"cypress/e2e/login-completo.cy.js\"",
-    "teste:avaliacao": "cypress run --spec \"cypress/e2e/avaliacao.cy.js\"",
-    "test:video": "cypress run --spec \"cypress/e2e/fatura.cy.js\" --browser chrome --headless"
-  }
-}
-```
 📝 Casos de Teste Implementados
 
 1. Cadastro de Usuário (cadastro.cy.js)
@@ -216,6 +174,8 @@ Scripts Personalizados (package.json)
 
 ✅ Validar preço, quantidade e total
 
+---
+
 🔧 Configuração do Cypress
 
 O arquivo cypress.config.js está configurado com:
@@ -235,6 +195,8 @@ O arquivo cypress.config.js está configurado com:
 - Screenshots: Automáticos em falhas
 
 - Retry Logic: Reexecução automática em falhas
+
+---
 
 🎯 Funcionalidades Testadas
 
@@ -266,57 +228,7 @@ Elementos de UI
 
 - Upload/Download de arquivos
 
-🔍 Estratégia de Organização
-
-🆕 Arquivo de Seletores Centralizados (selectors.json)
-```json
-{
-  "homePage": {
-    "logo": "img[alt='Website for automation practice']",
-    "firstProduct": ".features_items .product-image-wrapper",
-    "addToCartButton": ".add-to-cart"
-  },
-  "signupPage": {
-    "nameInput": "input[data-qa='signup-name']",
-    "emailInput": "input[data-qa='signup-email']"
-  }
-  // ... mais seletores organizados por página
-}
-```
-Vantagens desta Abordagem
-
-✅ Manutenibilidade: Seletores centralizados em um único arquivo
-
-✅ Reutilização: Mesmos seletores em diferentes testes
-
-✅ Consistência: Padronização na nomeação e estrutura
-
-✅ Atualização Rápida: Mudanças refletidas em todos os testes
-
-📊 Evidências de Teste
-
-Saídas Automáticas
-
-- Vídeos: Gravados em cypress/videos/ (configurável)
-
-- Screenshots: Capturados em cypress/screenshots/ em caso de falhas
-
-- Downloads: Arquivos baixados salvos em cypress/downloads/
-
-- Logs: Console output detalhado para debugging
-
-Exemplo de Execução
-```bash
-# Executar teste com vídeo
-npx cypress run --spec "cypress/e2e/fatura.cy.js" --browser chrome
-
-
-# Verificar vídeo gerado
-ls cypress/videos/fatura.cy.js.mp4
-
-# Verificar downloads
-ls cypress/downloads/invoice.txt
-```
+---
 
 🤝 Contribuição
 
@@ -330,11 +242,13 @@ ls cypress/downloads/invoice.txt
 
 5. Abra um Pull Request
 
+---
+
 📄 Licença
 Este projeto é para fins educacionais e de portfólio.
 
 ---
 
-📅 Última atualização: 21/11/2025
+📅 Última atualização: 27/11/2025
 👨‍💻 Mantido por: Thayse Dias
-🎯 Objetivo: Este projeto faz parte dos estudos de QA Automation utilizando Cypress e demonstra habilidades em automação de testes end-to-end seguindo boas práticas de organização e manutenibilidade.
+🎯 Objetivo: Este projeto faz parte dos estudos de QA Automation utilizando Cypress e demonstra habilidades em automação de testes end-to-end com geração de relatórios profissionais.

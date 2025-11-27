@@ -6,35 +6,42 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
 
-    "cy:run": "cypress run",
-    "cy:run:chrome": "cypress run --browser chrome",
-    "cy:run:headed": "cypress run --headed --browser chrome",
+    "cy:run": "npx cypress run",
+    "cy:run:chrome": "npx cypress run --browser chrome",
+    "cy:run:headed": "npx cypress run --headed --browser chrome",
 
-    "test:cadastro": "cypress run --spec \"cypress/e2e/cadastro.cy.js\"",
-    "test:login-completo": "cypress run --spec \"cypress/e2e/login-completo.cy.js\"",
-    "test:avaliacao-tradicional": "cypress run --spec \"cypress/e2e/avaliacao.cy.js\"",
-    "test:bdd": "cypress run --spec \"cypress/e2e/features/**/*.feature\"",
-    "test:avaliacao-bdd": "npx cypress run --spec \"cypress/e2e/features/avaliacao-produto.feature\" --browser chrome --headed",
+    "test:cadastro": "npx cypress run --spec \"cypress/e2e/cadastro.cy.js\"",
+    "test:login-completo": "npx cypress run --spec \"cypress/e2e/login-completo.cy.js\"",
+    "test:avaliacao-tradicional": "npx cypress run --spec \"cypress/e2e/avaliacao.cy.js\"",
+    "test:fatura": "npx cypress run --spec \"cypress/e2e/fatura.cy.js\"",
+    "test:adicionarAvaliacao": "npx cypress run --spec \"cypress/e2e/adicionarAvaliacao.cy.js\"",
+    "test:addprodutocar": "npx cypress run --spec \"cypress/e2e/add_produto_car.cy.js\"",
     "test:ci": "npx cypress run --browser chrome --headless --record false",
     "cypress:install": "npx cypress install --force",
 
+    "clean-reports": "rm -rf cypress/reports/* || true",
     "combine-reports": "npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/mochawesome-combined.json",
     "generate-report": "npx marge cypress/reports/mochawesome-combined.json --reportDir cypress/reports/html --inline --charts true --reportPageTitle \"AutomationExercise - Relatório de Testes\" --reportTitle \"Relatório E2E - AutomationExercise\"",
-    "delete-old-reports": "rm -rf cypress/reports/mochawesome/*.json cypress/reports/mochawesome-combined.json || true",
 
-    "cy:run:report": "npm run delete-old-reports && cypress run && npm run combine-reports && npm run generate-report",
-    "cy:run:chrome:report": "npm run delete-old-reports && cypress run --browser chrome && npm run combine-reports && npm run generate-report",
-    "cy:run:headed:report": "npm run delete-old-reports && cypress run --headed --browser chrome && npm run combine-reports && npm run generate-report",
+    "run:cadastro": "npm run clean-reports && npx cypress run --spec \"cypress/e2e/cadastro.cy.js\" && npm run combine-reports && npm run generate-report",
+    "run:login-completo": "npm run clean-reports && npx cypress run --spec \"cypress/e2e/login-completo.cy.js\" && npm run combine-reports && npm run generate-report",
+    "run:avaliacao-tradicional": "npm run clean-reports && npx cypress run --spec \"cypress/e2e/avaliacao.cy.js\" && npm run combine-reports && npm run generate-report",
+    "run:fatura": "npm run clean-reports && npx cypress run --spec \"cypress/e2e/fatura.cy.js\" && npm run combine-reports && npm run generate-report",
+    "run:adicionarAvaliacao": "npm run clean-reports && npx cypress run --spec \"cypress/e2e/adicionarAvaliacao.cy.js\" && npm run combine-reports && npm run generate-report",
+    "run:addprodutocar": "npm run clean-reports && npx cypress run --spec \"cypress/e2e/add_produto_car.cy.js\" && npm run combine-reports && npm run generate-report",
 
-    "cypress:open": "cypress open"
+    "run:all:tests": "npm run clean-reports && npx cypress run --headed --browser chrome && npm run combine-reports && npm run generate-report",
+    "run:all:headless": "npm run clean-reports && npx cypress run --browser chrome && npm run combine-reports && npm run generate-report",
+
+    "combine:existing": "npm run combine-reports && npm run generate-report",
+
+    "cypress:open": "npx cypress open"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^20.0.0",
-    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "cypress": "^13.6.6",
     "esbuild": "^0.20.0",
     "mochawesome": "^7.1.4",
