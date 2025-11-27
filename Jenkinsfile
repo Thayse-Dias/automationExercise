@@ -2,11 +2,13 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'nodejs'   // ← nome exato da instalação Node.js no seu Jenkins
+        nodejs 'nodejs'
     }
 
     environment {
-        CYPRESS_VIDEO = 'true'   // grava vídeo de todos os testes
+        CYPRESS_VIDEO = 'true'
+        // Força o Node/Cypress a encontrar a libatomic que vamos colocar no home do usuário
+        LD_LIBRARY_PATH = "${env.HOME}/lib:${env.LD_LIBRARY_PATH}"
     }
 
     stages {
@@ -19,17 +21,17 @@ pipeline {
         stage('Instalar dependências') {
             steps {
                 sh '''
-                    # Baixa a libatomic que estava faltando (só na primeira execução)
-                    if [ ! -f /usr/lib/x86_64-linux-gnu/libatomic.so.1 ]; then
-                        mkdir -p /usr/lib/x86_64-linux-gnu
-                        curl -sL https://github.com/cypress-io/cypress-docker-images/raw/master/included/13.15.0/libs/libatomic.so.1 \
-                             -o /usr/lib/x86_64-linux-gnu/libatomic.so.1
-                    fi
+                    # Cria diretório no home do usuário jenkins (sempre tem permissão)
+                    mkdir -p ~/lib
 
-                    # Instala as dependências do projeto
+                    # Baixa a libatomic para o diretório do usuário (nunca dá erro de permissão)
+                    curl -sL https://github.com/cypress-io/cypress-docker-images/raw/master/included/13.15.0/libs/libatomic.so.1 \
+                         -o ~/lib/libatomic.so.1
+
+                    # Instala dependências do projeto
                     npm ci --prefer-offline --no-audit
 
-                    # Verifica e baixa o binário do Cypress se necessário
+                    # Verifica o Cypress (agora ele acha a libatomic graças ao LD_LIBRARY_PATH)
                     npx cypress verify
                 '''
             }
@@ -55,13 +57,13 @@ pipeline {
     <meta charset="UTF-8">
     <title>Automation Exercise - Build #${BUILD_NUMBER}</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background: #f9f9f9; line-height: 1.6; }
-        h1 { color: #2c3e50; }
-        a { color: #2980b9; font-size: 18px; text-decoration: none; }
-        .status { font-weight: bold; padding: 5px 10px; border-radius: 5px; }
-        .SUCCESS { background: #d4edda; color: #155724; }
-        .UNSTABLE { background: #fff3cd; color: #856404; }
-        .FAILURE { background: #f8d7da; color: #721c24; }
+        body {font-family: Arial, sans-serif; margin: 40px; background: #f9f9f9; line-height: 1.6;}
+        h1 {color: #2c3e50;}
+        a {color: #2980b9; font-size: 18px; text-decoration: none;}
+        .status {font-weight: bold; padding: 8px 12px; border-radius: 6px; color: white;}
+        .SUCCESS {background: #28a745;}
+        .UNSTABLE {background: #ffc107; color: #212529;}
+        .FAILURE {background: #dc3545;}
     </style>
 </head>
 <body>
@@ -76,20 +78,14 @@ pipeline {
 EOF
             '''
 
-            // 2º Agora arquiva tudo (vídeos, screenshots e o relatório recém-criado)
+            // 2º Agora arquiva tudo (vídeos, screenshots e relatório)
             archiveArtifacts artifacts: 'cypress/videos/**/*.mp4',   allowEmptyArchive: true, fingerprint: true
             archiveArtifacts artifacts: 'cypress/screenshots/**/*.png', allowEmptyArchive: true, fingerprint: true
             archiveArtifacts artifacts: 'relatorio.html', allowEmptyArchive: true, fingerprint: true
         }
 
-        success {
-            echo 'SUCESSO TOTAL!'
-        }
-        unstable {
-            echo 'ALGUNS TESTES FALHARAM – veja os vídeos, screenshots e o relatório.html'
-        }
-        failure {
-            echo 'PIPELINE QUEBROU – mas os artefatos foram salvos'
-        }
+        success  { echo 'SUCESSO TOTAL!' }
+        unstable { echo 'ALGUNS TESTES FALHARAM – veja os vídeos, screenshots e relatório.html' }
+        failure  { echo 'PIPELINE QUEBROU – mas os artefatos foram salvos' }
     }
 }
