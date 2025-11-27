@@ -1,0 +1,110 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-11-27T13:01:07.491Z",
+    "end": "2025-11-27T13:03:07.869Z",
+    "duration": 120378,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "1c1c58e2-0239-4fa1-9ce5-c9720291c8a1",
+      "title": "",
+      "fullFile": "cypress\\e2e\\cadastro.cy.js",
+      "file": "cypress\\e2e\\cadastro.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "47c3353d-6c86-45dc-bbbf-ebdf2f978c9c",
+          "title": "Automation Exercise - Cadastro",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "deve completar o cadastro com sucesso",
+              "fullTitle": "Automation Exercise - Cadastro deve completar o cadastro com sucesso",
+              "timedOut": null,
+              "duration": 47293,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get(selectorList.loginLink, { timeout: 1e4 }).click();\ncy.url().should(\"include\", \"/login\");\ncy.contains(\"New User Signup!\", { timeout: 1e4 }).should(\"be.visible\");\nconst timestamp = Date.now();\ncreatedUserEmail = `thayse.dias${timestamp}@gmail.com`;\ncy.get(selectorList.signupName).type(\"Thayse Dias\");\ncy.get(selectorList.signupEmail).type(createdUserEmail);\ncy.get(selectorList.signupButton).click();\ncy.contains(\"Enter Account Information\", { timeout: 15e3 }).should(\"be.visible\");\ncy.get(selectorList.titleMrs).check();\ncy.get(selectorList.password).type(\"senha123\");\ncy.get(selectorList.days).select(\"26\");\ncy.get(selectorList.months).select(\"March\");\ncy.get(selectorList.years).select(\"1983\");\ncy.get(selectorList.newsletter).check();\ncy.get(selectorList.optin).check();\ncy.get(selectorList.firstName).type(\"Thayse\");\ncy.get(selectorList.lastName).type(\"Dias\");\ncy.get(selectorList.company).type(\"Empresa QAMais\");\ncy.get(selectorList.address1).type(\"Rua Teste, 123\");\ncy.get(selectorList.country).select(\"United States\");\ncy.get(selectorList.state).type(\"California\");\ncy.get(selectorList.city).type(\"Los Angeles\");\ncy.get(selectorList.zipcode).type(\"90001\");\ncy.get(selectorList.mobileNumber).type(\"1234567890\");\ncy.get(selectorList.createAccountButton).click();\ncy.get(\"body\").then(($body) => {\n  if ($body.find(selectorList.successMessage).length > 0) {\n    cy.get(selectorList.successMessage, { timeout: 3e4 }).should(\"be.visible\").and(\"contain\", \"Account Created!\");\n  } else if ($body.text().includes(\"Account Created\")) {\n    cy.contains(\"b\", \"Account Created!\", { timeout: 3e4 }).should(\"be.visible\");\n  } else {\n    cy.url({ timeout: 3e4 }).should(\"include\", \"/account_created\");\n  }\n});\ncy.get(selectorList.continueButton, { timeout: 15e3 }).click();\ncy.contains(\"Logged in as\", { timeout: 15e3 }).should(\"be.visible\");\ncy.task(\"setUserEmail\", createdUserEmail);\ncy.log(`\\u2705 Usu\\xE1rio criado: ${createdUserEmail}`);",
+              "err": {
+                "message": "CypressError: `cy.task('setUserEmail')` failed with the following error:\n\nThe task 'setUserEmail' was not handled in the setupNodeEvents method. The following tasks are registered: cypress-cucumber-preprocessor:spec-envelopes, cypress-cucumber-preprocessor:test-case-started, cypress-cucumber-preprocessor:test-step-started, cypress-cucumber-preprocessor:test-step-finished, cypress-cucumber-preprocessor:test-case-finished, cypress-cucumber-preprocessor:create-string-attachment\n\nFix this in your setupNodeEvents method here:\nC:\\Users\\thays\\OneDrive\\Área de Trabalho\\QA Tester\\1 Study\\automationExercise\\cypress.config.js\n\nhttps://on.cypress.io/api/task",
+                "estack": "CypressError: `cy.task('setUserEmail')` failed with the following error:\n\nThe task 'setUserEmail' was not handled in the setupNodeEvents method. The following tasks are registered: cypress-cucumber-preprocessor:spec-envelopes, cypress-cucumber-preprocessor:test-case-started, cypress-cucumber-preprocessor:test-step-started, cypress-cucumber-preprocessor:test-step-finished, cypress-cucumber-preprocessor:test-case-finished, cypress-cucumber-preprocessor:create-string-attachment\n\nFix this in your setupNodeEvents method here:\nC:\\Users\\thays\\OneDrive\\Área de Trabalho\\QA Tester\\1 Study\\automationExercise\\cypress.config.js\n\nhttps://on.cypress.io/api/task\n    at <unknown> (https://automationexercise.com/__cypress/runner/cypress_runner.js:135115:72)\n    at tryCatcher (https://automationexercise.com/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (https://automationexercise.com/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (https://automationexercise.com/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (https://automationexercise.com/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (https://automationexercise.com/__cypress/runner/cypress_runner.js:1720:18)\n    at _drainQueueStep (https://automationexercise.com/__cypress/runner/cypress_runner.js:2430:12)\n    at _drainQueue (https://automationexercise.com/__cypress/runner/cypress_runner.js:2423:9)\n    at Async._drainQueues (https://automationexercise.com/__cypress/runner/cypress_runner.js:2439:5)\n    at Async.drainQueues (https://automationexercise.com/__cypress/runner/cypress_runner.js:2309:14)\nFrom Your Spec Code:\n    at Context.eval (https://automationexercise.com/__cypress/tests?p=cypress\\e2e\\cadastro.cy.js:79:14)",
+                "diff": null
+              },
+              "uuid": "b50be5bc-df89-4c27-a982-01bf2954ddd2",
+              "parentUUID": "47c3353d-6c86-45dc-bbbf-ebdf2f978c9c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "b50be5bc-df89-4c27-a982-01bf2954ddd2"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 47293,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "timestamp": "ddmmyyyy_HHmmss"
+      },
+      "version": "6.3.2"
+    }
+  }
+}
