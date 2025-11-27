@@ -1,14 +1,13 @@
 pipeline {
-    agent {
-        docker {
-            image 'cypress/included:13.15.0'   // Já vem com Node, Cypress, Chrome e TODAS as libs (inclusive libatomic)
-            args '-u root:root --memory-swap -1'
-        }
+    agent any
+
+    tools {
+        nodejs 'nodejs' 
     }
 
     environment {
-        NODE_OPTIONS = "--max_old_space_size=4096"
-        CYPRESS_VIDEO = "true"
+        CYPRESS_VIDEO = 'true'
+        NODE_OPTIONS = '--max_old_space_size=4096'
     }
 
     stages {
@@ -18,10 +17,31 @@ pipeline {
             }
         }
 
-        stage('Instalar Dependências') {
+        stage('Instalar libs que faltam + npm ci') {
             steps {
-                sh 'npm ci --prefer-offline --no-audit'
-                sh 'npx cypress verify'
+                sh '''
+                    # Baixa e coloca as libs essenciais direto nos lugares certos (funciona sem sudo)
+                    mkdir -p /usr/lib/x86_64-linux-gnu
+                    
+                    # libatomic.so.1
+                    if [ ! -f /usr/lib/x86_64-linux-gnu/libatomic.so.1 ]; then
+                        curl -sL https://github.com/cypress-io/cypress-docker-images/raw/master/included/13.15.0/libs/libatomic.so.1 \
+                            -o /usr/lib/x86_64-linux-gnu/libatomic.so.1
+                    fi
+
+                    # Outras libs críticas que o Chrome/Cypress precisa
+                    for lib in libgtk-3.so.0 libnss3.so libgdk-3.so.0 libxss.so.1 libasound.so.2 libgbm.so.1; do
+                        if [ ! -f "/usr/lib/x86_64-linux-gnu/$lib" ]; then
+                            echo "Aviso: $lib não encontrada – Cypress pode rodar em modo headless mesmo assim"
+                        fi
+                    done
+
+                    # Instala as dependências do projeto
+                    npm ci --prefer-offline --no-audit
+
+                    # Verifica o Cypress
+                    npx cypress verify
+                '''
             }
         }
 
@@ -36,35 +56,23 @@ pipeline {
 
     post {
         always {
-            archiveArtifacts artifacts: 'cypress/videos/**/*.mp4', allowEmptyArchive: true, fingerprint: true
+            // Salva vídeos e prints mesmo se falhar
+            archiveArtifacts artifacts: 'cypress/videos/**/*.mp4',   allowEmptyArchive: true, fingerprint: true
             archiveArtifacts artifacts: 'cypress/screenshots/**/*.png', allowEmptyArchive: true, fingerprint: true
             
+            // Relatório simples
             sh '''
-                echo "<html><body>
-                <h1>Relatório Automation Exercise</h1>
-                <p>Build: #${BUILD_NUMBER}</p>
-                <p>Branch: ${GIT_BRANCH}</p>
-                <p><a href='${BUILD_URL}'>Ver no Jenkins</a></p>
-                </body></html>" > relatorio.html
+                echo "<h2>Automation Exercise – Build #${BUILD_NUMBER}</h2><p><a href='${BUILD_URL}'>Ver no Jenkins</a></p>" > relatorio.html
             '''
-            archiveArtifacts 'relatorio.html'
-            
-            sh 'rm -rf node_modules/cypress/.cache || true'
+            archiveArtifacts 'relatorio.html', allowEmptyArchive: true
+
+            cleanWs() // opcional: limpa o workspace
         }
         success {
-            echo 'TODOS OS TESTES PASSARAM!'
-            emailext subject: "SUCESSO - ${env.JOB_NAME}",
-                     body: "Tudo verde! ${env.BUILD_URL}",
-                     to: 'thayse.dias@gmail.com',
-                     mimeType: 'text/html'
+            echo 'SUCESSO TOTAL!'
         }
         failure {
-            echo 'FALHOU!'
-            emailext subject: "FALHA - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                     body: "Corrige logo! Vídeos e prints em anexo → ${env.BUILD_URL}",
-                     to: 'thayse.dias@gmail.com',
-                     mimeType: 'text/html',
-                     attachLog: true
+            echo 'FALHOU – mas vídeos e prints já estão salvos'
         }
     }
 }
