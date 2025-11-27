@@ -93,6 +93,9 @@ npx tsc --init
 ```bash
 docker start jenkins-cypress
 ```
+# Senha do Email configurado no Jenkins
+Login: thayse.dias@gmail.com
+senha: qeaz swub afci jblb
 # Comando para listar todos os arquivos exixtentes na pasta e2e
 
 ls cypress/e2e/
