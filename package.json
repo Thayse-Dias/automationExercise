@@ -14,7 +14,9 @@
     "test:login-completo": "cypress run --spec \"cypress/e2e/login-completo.cy.js\"",
     "test:avaliacao-tradicional": "cypress run --spec \"cypress/e2e/avaliacao.cy.js\"",
     "test:bdd": "cypress run --spec \"cypress/e2e/features/**/*.feature\"",
-    "test:avaliacao-bdd": "npx cypress run --spec \"cypress/e2e/features/avaliacao-produto.feature\" --browser chrome",
+    "test:avaliacao-bdd": "npx cypress run --spec \"cypress/e2e/features/avaliacao-produto.feature\" --browser chrome --headed",
+    "test:ci": "npx cypress run --browser chrome --headless --record false",
+    "cypress:install": "npx cypress install --force",
 
     "combine-reports": "npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/mochawesome-combined.json",
     "generate-report": "npx marge cypress/reports/mochawesome-combined.json --reportDir cypress/reports/html --inline --charts true --reportPageTitle \"AutomationExercise - Relatório de Testes\" --reportTitle \"Relatório E2E - AutomationExercise\"",

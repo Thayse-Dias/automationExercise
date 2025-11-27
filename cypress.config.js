@@ -20,23 +20,26 @@ module.exports = defineConfig({
 
     // MOCHAWESOME REPORTER
     reporter: "mochawesome",
-    reporter: 'mochawesome',
     reporterOptions: {
       reportDir: "cypress/reports/mochawesome",
       overwrite: false,          // não sobrescreve relatórios antigos
-      html: false,               // gera só JSON (o HTML será criado depois)
+      html: true,               // gera HTML e JSON
       json: true,
-      timestamp: true,
       timestamp: "ddmmyyyy_HHmmss"
     },
+    // Configurações otimizadas para CI
+    retries: {
+      runMode: 1,
+      openMode: 0
+    },
 
-    setupNodeEvents(on, config) {
+    async setupNodeEvents(on, config) {
       // Cucumber Preprocessor (BDD)
       const bundler = createBundler({
         plugins: [createEsbuildPlugin(config)],
       });
       on("file:preprocessor", bundler);
-      addCucumberPreprocessorPlugin(on, config);
+      await addCucumberPreprocessorPlugin(on, config);
 
       // Garante que a pasta de relatórios exista
       const fs = require('fs');

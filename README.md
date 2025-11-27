@@ -89,6 +89,7 @@ npm install typescript @types/node --save-dev
 npx tsc --init
 ```
 # Abrir o Jenkins
+1. Abre o docker
 ```bash
 docker start jenkins-cypress
 ```
