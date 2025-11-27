@@ -2,12 +2,11 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'nodejs' 
+        nodejs 'nodejs' // ← não mude esse nome se já existe no seu Jenkins
     }
 
     environment {
         CYPRESS_VIDEO = 'true'
-        NODE_OPTIONS = '--max_old_space_size=4096'
     }
 
     stages {
@@ -17,35 +16,23 @@ pipeline {
             }
         }
 
-        stage('Instalar libs que faltam + npm ci') {
+        stage('Instalar dependências') {
             steps {
                 sh '''
-                    # Baixa e coloca as libs essenciais direto nos lugares certos (funciona sem sudo)
-                    mkdir -p /usr/lib/x86_64-linux-gnu
-                    
-                    # libatomic.so.1
+                    # Só baixa a libatomic que estava faltando (o resto o Cypress aceita em modo headless)
                     if [ ! -f /usr/lib/x86_64-linux-gnu/libatomic.so.1 ]; then
+                        mkdir -p /usr/lib/x86_64-linux-gnu
                         curl -sL https://github.com/cypress-io/cypress-docker-images/raw/master/included/13.15.0/libs/libatomic.so.1 \
-                            -o /usr/lib/x86_64-linux-gnu/libatomic.so.1
+                             -o /usr/lib/x86_64-linux-gnu/libatomic.so.1
                     fi
 
-                    # Outras libs críticas que o Chrome/Cypress precisa
-                    for lib in libgtk-3.so.0 libnss3.so libgdk-3.so.0 libxss.so.1 libasound.so.2 libgbm.so.1; do
-                        if [ ! -f "/usr/lib/x86_64-linux-gnu/$lib" ]; then
-                            echo "Aviso: $lib não encontrada – Cypress pode rodar em modo headless mesmo assim"
-                        fi
-                    done
-
-                    # Instala as dependências do projeto
                     npm ci --prefer-offline --no-audit
-
-                    # Verifica o Cypress
                     npx cypress verify
                 '''
             }
         }
 
-        stage('Executar Testes Cypress') {
+        stage('Executar testes') {
             steps {
                 catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
                     sh 'npm run test:avaliacao-bdd'
@@ -56,23 +43,35 @@ pipeline {
 
     post {
         always {
-            // Salva vídeos e prints mesmo se falhar
-            archiveArtifacts artifacts: 'cypress/videos/**/*.mp4',   allowEmptyArchive: true, fingerprint: true
-            archiveArtifacts artifacts: 'cypress/screenshots/**/*.png', allowEmptyArchive: true, fingerprint: true
-            
-            // Relatório simples
-            sh '''
-                echo "<h2>Automation Exercise – Build #${BUILD_NUMBER}</h2><p><a href='${BUILD_URL}'>Ver no Jenkins</a></p>" > relatorio.html
-            '''
-            archiveArtifacts 'relatorio.html', allowEmptyArchive: true
+            archiveArtifacts(
+                artifacts: 'cypress/videos/**/*.mp4',
+                allowEmptyArchive: true,
+                fingerprint: true
+            )
+            archiveArtifacts(
+                artifacts: 'cypress/screenshots/**/*.png',
+                allowEmptyArchive: true,
+                fingerprint: true
+            )
+            archiveArtifacts(
+                artifacts: 'relatorio.html',
+                allowEmptyArchive: true
+            )
 
-            cleanWs() // opcional: limpa o workspace
+            sh '''
+                echo "<h1>Automation Exercise – Build #${BUILD_NUMBER}</h1>
+                      <p>Branch: ${GIT_BRANCH}</p>
+                      <p><a href='${BUILD_URL}'>Abrir no Jenkins</a></p>" > relatorio.html
+            '''
         }
         success {
-            echo 'SUCESSO TOTAL!'
+            echo 'SUCESSO!'
         }
         failure {
-            echo 'FALHOU – mas vídeos e prints já estão salvos'
+            echo 'FALHOU – mas os vídeos e prints já estão salvos nos artefatos'
+        }
+        unstable {
+            echo 'ALGUNS TESTES FALHARAM – veja os vídeos'
         }
     }
 }
