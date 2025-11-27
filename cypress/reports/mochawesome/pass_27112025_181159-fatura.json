@@ -1,0 +1,110 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-11-27T21:26:59.249Z",
+    "end": "2025-11-27T21:27:59.581Z",
+    "duration": 60332,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "44a4c69e-a4bc-4228-86dc-f82c06567adf",
+      "title": "",
+      "fullFile": "cypress\\e2e\\fatura.cy.js",
+      "file": "cypress\\e2e\\fatura.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4e272f8f-601f-4232-aeca-1613be0090e3",
+          "title": "Caso de teste: Baixar fatura após a ordem de compra",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve completar o fluxo de compra e baixar a fatura",
+              "fullTitle": "Caso de teste: Baixar fatura após a ordem de compra Deve completar o fluxo de compra e baixar a fatura",
+              "timedOut": null,
+              "duration": 60029,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "01dcd7c9-1a57-46dc-92fa-97adf14d61d4",
+              "parentUUID": "4e272f8f-601f-4232-aeca-1613be0090e3",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "01dcd7c9-1a57-46dc-92fa-97adf14d61d4"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 60029,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "[status]_[datetime]-[name]",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": false
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "code": false,
+        "timestamp": "ddmmyyyy_HHmmss",
+        "reportFilename": "[status]_[datetime]-[name]",
+        "quiet": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

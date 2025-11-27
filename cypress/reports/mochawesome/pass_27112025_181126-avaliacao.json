@@ -1,0 +1,110 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-11-27T21:14:11.131Z",
+    "end": "2025-11-27T21:14:26.255Z",
+    "duration": 15124,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6e14526d-afb4-4fb8-b155-a65d4f694419",
+      "title": "",
+      "fullFile": "cypress\\e2e\\avaliacao.cy.js",
+      "file": "cypress\\e2e\\avaliacao.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "846edd17-35a5-4d2f-ac71-139ff89f37ae",
+          "title": "Adicionar avaliação ao produto",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "deve permitir adicionar uma avaliação ao produto",
+              "fullTitle": "Adicionar avaliação ao produto deve permitir adicionar uma avaliação ao produto",
+              "timedOut": null,
+              "duration": 15040,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "ae907a8e-2478-4f1c-a951-a02b0edbb36f",
+              "parentUUID": "846edd17-35a5-4d2f-ac71-139ff89f37ae",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ae907a8e-2478-4f1c-a951-a02b0edbb36f"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 15040,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "[status]_[datetime]-[name]",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": false
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "code": false,
+        "timestamp": "ddmmyyyy_HHmmss",
+        "reportFilename": "[status]_[datetime]-[name]",
+        "quiet": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

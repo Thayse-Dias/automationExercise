@@ -1,0 +1,148 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-11-27T21:59:06.493Z",
+    "end": "2025-11-27T21:59:53.920Z",
+    "duration": 47427,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "75542f53-eaf6-4ec6-aa14-46adb34f878b",
+      "title": "",
+      "fullFile": "cypress\\e2e\\health-check.cy.js",
+      "file": "cypress\\e2e\\health-check.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1cfc1781-0456-4e52-bc6f-1f54b069f68b",
+          "title": "Health Checks - AutomationExercise",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should load the website and basic functionality",
+              "fullTitle": "Health Checks - AutomationExercise should load the website and basic functionality",
+              "timedOut": null,
+              "duration": 32666,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "4a919eed-f42a-495a-a52e-493e2ad57d6d",
+              "parentUUID": "1cfc1781-0456-4e52-bc6f-1f54b069f68b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should have working forms and interactive elements",
+              "fullTitle": "Health Checks - AutomationExercise should have working forms and interactive elements",
+              "timedOut": null,
+              "duration": 8381,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "d0a0e7f9-501d-4f5a-82f1-419ba0cf5fd3",
+              "parentUUID": "1cfc1781-0456-4e52-bc6f-1f54b069f68b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should load within acceptable time",
+              "fullTitle": "Health Checks - AutomationExercise should load within acceptable time",
+              "timedOut": null,
+              "duration": 5841,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "7a834781-927b-42b4-9e51-dbb309f09aff",
+              "parentUUID": "1cfc1781-0456-4e52-bc6f-1f54b069f68b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4a919eed-f42a-495a-a52e-493e2ad57d6d",
+            "d0a0e7f9-501d-4f5a-82f1-419ba0cf5fd3",
+            "7a834781-927b-42b4-9e51-dbb309f09aff"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 46888,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "[status]_[datetime]-[name]",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": false
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "code": false,
+        "timestamp": "ddmmyyyy_HHmmss",
+        "reportFilename": "[status]_[datetime]-[name]",
+        "quiet": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

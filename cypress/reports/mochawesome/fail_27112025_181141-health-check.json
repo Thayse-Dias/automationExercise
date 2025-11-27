@@ -1,0 +1,172 @@
+{
+  "stats": {
+    "suites": 3,
+    "tests": 2,
+    "passes": 1,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-11-27T21:40:20.545Z",
+    "end": "2025-11-27T21:40:41.750Z",
+    "duration": 21205,
+    "testsRegistered": 2,
+    "passPercent": 50,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6ad3dc8b-3b7a-41a7-80e7-93d917cd2d1e",
+      "title": "",
+      "fullFile": "cypress\\e2e\\health-check.cy.js",
+      "file": "cypress\\e2e\\health-check.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "ea3c08c6-0de5-4303-b141-23b389f6fcda",
+          "title": "Application Health Check Suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "af05f8fc-2bbb-4fc9-9e4a-ac36140eee98",
+              "title": "Home Page Health",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should pass all health checks",
+                  "fullTitle": "Application Health Check Suite Home Page Health should pass all health checks",
+                  "timedOut": null,
+                  "duration": 6109,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "",
+                  "err": {
+                    "message": "AssertionError: expected NaN to be below 5000",
+                    "estack": "AssertionError: expected NaN to be below 5000\n    at Context.eval (https://automationexercise.com/__cypress/tests?p=cypress\\e2e\\health-check.cy.js:19:38)",
+                    "diff": null
+                  },
+                  "uuid": "a2e71efc-df10-4b38-a442-6be9c0c87653",
+                  "parentUUID": "af05f8fc-2bbb-4fc9-9e4a-ac36140eee98",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [
+                "a2e71efc-df10-4b38-a442-6be9c0c87653"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 6109,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "0eaeb487-97f2-403a-b23a-d60ae33bbe83",
+              "title": "Performance Benchmarks",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should meet performance standards",
+                  "fullTitle": "Application Health Check Suite Performance Benchmarks should meet performance standards",
+                  "timedOut": null,
+                  "duration": 5693,
+                  "state": "passed",
+                  "speed": "medium",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "",
+                  "err": {},
+                  "uuid": "1fa73a01-281f-47f4-bfa6-39e57cbffb09",
+                  "parentUUID": "0eaeb487-97f2-403a-b23a-d60ae33bbe83",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "1fa73a01-281f-47f4-bfa6-39e57cbffb09"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 5693,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "[status]_[datetime]-[name]",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": false
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "code": false,
+        "timestamp": "ddmmyyyy_HHmmss",
+        "reportFilename": "[status]_[datetime]-[name]",
+        "quiet": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

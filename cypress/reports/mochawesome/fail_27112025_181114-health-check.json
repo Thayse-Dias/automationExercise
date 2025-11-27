@@ -1,0 +1,137 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 0,
+    "pending": 0,
+    "failures": 2,
+    "start": "2025-11-27T21:46:03.427Z",
+    "end": "2025-11-27T21:47:14.724Z",
+    "duration": 71297,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "87282c59-a93b-4fc1-92e4-2c6661569b90",
+      "title": "",
+      "fullFile": "cypress\\e2e\\health-check.cy.js",
+      "file": "cypress\\e2e\\health-check.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "896ad9bb-4a9b-4971-8529-5c6cb187141d",
+          "title": "Health Checks - AutomationExercise",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should load home page successfully",
+              "fullTitle": "Health Checks - AutomationExercise should load home page successfully",
+              "timedOut": null,
+              "duration": 19538,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'Automation Exercise' but never did.",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find content: 'Automation Exercise' but never did.\n    at Context.eval (https://automationexercise.com/__cypress/tests?p=cypress\\e2e\\health-check.cy.js:22:46)",
+                "diff": null
+              },
+              "uuid": "10cd7126-3f6c-49bc-a9b4-b1c1737f119b",
+              "parentUUID": "896ad9bb-4a9b-4971-8529-5c6cb187141d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should have all main sections",
+              "fullTitle": "Health Checks - AutomationExercise should have all main sections",
+              "timedOut": null,
+              "duration": 16303,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `nav`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 10000ms: Expected to find element: `nav`, but never found it.\n    at eval (https://automationexercise.com/__cypress/tests?p=cypress\\e2e\\health-check.cy.js:39:29)\nat Array.forEach (<anonymous>)\n    at Context.eval (https://automationexercise.com/__cypress/tests?p=cypress\\e2e\\health-check.cy.js:38:20)",
+                "diff": null
+              },
+              "uuid": "2b7c1ace-d6a7-4eb7-bb32-55d7a8e45838",
+              "parentUUID": "896ad9bb-4a9b-4971-8529-5c6cb187141d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "10cd7126-3f6c-49bc-a9b4-b1c1737f119b",
+            "2b7c1ace-d6a7-4eb7-bb32-55d7a8e45838"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 35841,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "[status]_[datetime]-[name]",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": false
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "code": false,
+        "timestamp": "ddmmyyyy_HHmmss",
+        "reportFilename": "[status]_[datetime]-[name]",
+        "quiet": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

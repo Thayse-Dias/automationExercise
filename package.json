@@ -16,6 +16,7 @@
     "test:fatura": "npx cypress run --spec \"cypress/e2e/fatura.cy.js\"",
     "test:adicionarAvaliacao": "npx cypress run --spec \"cypress/e2e/adicionarAvaliacao.cy.js\"",
     "test:addprodutocar": "npx cypress run --spec \"cypress/e2e/add_produto_car.cy.js\"",
+    "test:health-check": "npx cypress run --spec \"cypress/e2e/health-check.cy.js\" --browser chrome",
     "test:ci": "npx cypress run --browser chrome --headless --record false",
     "cypress:install": "npx cypress install --force",
 
@@ -33,6 +34,10 @@
     "run:all:tests": "npm run clean-reports && npx cypress run --headed --browser chrome && npm run combine-reports && npm run generate-report",
     "run:all:headless": "npm run clean-reports && npx cypress run --browser chrome && npm run combine-reports && npm run generate-report",
 
+    "run:health-check": "npm run clean-reports && npx cypress run --spec \"cypress/e2e/health-check.cy.js\" --browser chrome && npm run combine-reports && npm run generate-report",
+    "test:healthcheck": "npx cypress run --spec \"cypress/e2e/health-check.cy.js\" --browser chrome",
+    "test:health-check:ci": "npx cypress run --spec \"cypress/e2e/health-check.cy.js\" --browser chrome --headless --config defaultCommandTimeout=10000,pageLoadTimeout=30000",
+    
     "combine:existing": "npm run combine-reports && npm run generate-report",
 
     "cypress:open": "npx cypress open"

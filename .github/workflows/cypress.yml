@@ -31,15 +31,30 @@ jobs:
       - name: Install Cypress
         run: npx cypress install
 
-      - name: Run Cypress Tests
-        run: npx cypress run --browser chrome --headless
+      - name: Install Chrome dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libgbm1
+
+      - name: Clean previous reports
+        run: |
+          rm -rf cypress/reports/* || true
+          mkdir -p cypress/reports/mochawesome
+
+      - name: Run Health Checks
+        run: npx cypress run --spec "cypress/e2e/health-check.cy.js" --browser chrome --headless
+
+      - name: Run Full Test Suite
+        run: npx cypress run --browser chrome --headless --reporter mochawesome
+        env:
+          CYPRESS_REPORTS_DIR: cypress/reports/mochawesome
         continue-on-error: true
 
       - name: Upload videos and screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-artifacts-${{ matrix.containers }}   # ← cada container tem nome diferente
+          name: cypress-artifacts-${{ matrix.containers }}
           path: |
             cypress/videos/
             cypress/screenshots/
@@ -48,14 +63,20 @@ jobs:
       - name: Generate Mochawesome Report
         if: always()
         run: |
-          npx mochawesome-merge cypress/reports/mochawesome/*.json > mochawesome.json || echo "No JSON files"
-          npx marge mochawesome.json --reportDir mochawesome-report --inline || echo "Report generated with warnings"
+          # Verifica se existem arquivos JSON antes de tentar combinar
+          if ls cypress/reports/mochawesome/*.json 1> /dev/null 2>&1; then
+            npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/mochawesome-combined.json
+            npx marge cypress/reports/mochawesome-combined.json --reportDir cypress/reports/html --inline
+            echo "Report generated successfully"
+          else
+            echo "No test results to generate report"
+            exit 0
+          fi
 
       - name: Upload HTML Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: html-report-${{ matrix.containers }}   # ← AQUI ESTAVA O PROBLEMA! Agora cada container tem seu próprio relatório
-          path: mochawesome-report/
+          name: html-report-combined
+          path: cypress/reports/html/
           retention-days: 30
-          

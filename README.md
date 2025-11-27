@@ -2,9 +2,11 @@
 
 Este projeto contém testes automatizados para o site Automation Exercise utilizando Cypress como ferramenta de automação, com geração de relatórios detalhados usando Mochawesome.
 
-https://img.shields.io/badge/Cypress-13.6.6-brightgreen
-https://img.shields.io/badge/Node.js-16+-green
+https://img.shields.io/badge/Cypress-13.17.0-brightgreen
+https://img.shields.io/badge/Node.js-22.12.0-green
 https://img.shields.io/badge/QA-Automation-blue
+https://img.shields.io/badge/GitHub_Actions-Enabled-orange
+https://img.shields.io/badge/Reports-Mochawesome-purple
 
 📋 Sobre o Projeto
 Este projeto implementa testes automatizados end-to-end para o site Automation Exercise, uma plataforma dedicada à prática de automação de testes. O projeto inclui relatórios HTML detalhados para análise dos resultados.
@@ -14,15 +16,12 @@ Este projeto implementa testes automatizados end-to-end para o site Automation E
 ✨ Características Principais
 
 ✅ Organização com Fixtures: Seletores centralizados para fácil manutenção
-
 ✅ Relatórios Mochawesome: Relatórios HTML detalhados e combinados
-
+✅ CI/CD Integrado: GitHub Actions com execução paralela
+✅ Health Checks: Verificações de performance e disponibilidade
 ✅ Gravação de Vídeos: Captura automática da execução dos testes
-
 ✅ Screenshots em Falhas: Evidências visuais para debugging
-
 ✅ Dados Dinâmicos: Geração automática de emails únicos
-
 ✅ Configuração Robusta: Timeouts e configurações otimizadas
 
 ---
@@ -53,7 +52,8 @@ automationExercise/
 │   │   ├── login-completo.cy.js    # Teste de login completo
 │   │   ├── avaliacao.cy.js         # Teste de adição de avaliação ao produto
 │   │   ├── add_produto_car.cy.js   # Teste de adicionar produto ao carrinho
-│   │   └── adicionarAvaliacao.cy.js # Teste de adicionar avaliação
+│   │   ├── adicionarAvaliacao.cy.js # Teste de adicionar avaliação
+│   │   └── health-check.cy.js      # Testes de health check e performance
 │   ├── fixtures/
 │   │   ├── example.json            # Dados de exemplo
 │   │   └── selectors.json          # Seletores centralizados
@@ -66,6 +66,7 @@ automationExercise/
 │   └── reports/                    # Relatórios de teste (mochawesome)
 ├── cypress.config.js               # Configuração principal do Cypress
 ├── package.json                    # Dependências e scripts do projeto
+├── tsconfig.json                   # Configuração TypeScript
 └── README.md                       # Documentação do projeto
 ```
 ---
@@ -96,6 +97,23 @@ Interface Gráfica do Cypress
 # Abrir interface do Cypress
 npx cypress open
 ```
+---
+
+🚀 CI/CD com GitHub Actions
+O projeto inclui pipeline automatizado no GitHub Actions:
+
+Execução em 3 containers paralelos
+
+Health checks automáticos
+
+Upload de vídeos e screenshots
+
+Geração de relatórios HTML
+
+Trigger em push e pull requests
+
+Arquivo de configuração: .github/workflows/cypress.yml
+
 ---
 
 📝 Casos de Teste Implementados
@@ -174,6 +192,16 @@ npx cypress open
 
 ✅ Validar preço, quantidade e total
 
+6. Health Checks (health-check.cy.js)
+
+✅ Verificação de disponibilidade do site
+
+✅ Testes de performance
+
+✅ Validação de elementos críticos
+
+✅ Monitoramento de erros no console
+
 ---
 
 🔧 Configuração do Cypress
@@ -227,6 +255,16 @@ Elementos de UI
 - Modal e pop-up interactions
 
 - Upload/Download de arquivos
+
+Performance e Health
+
+- Tempos de carregamento
+
+- Disponibilidade do serviço
+
+- Integridade de elementos críticos
+
+- Monitoramento de erros
 
 ---
 

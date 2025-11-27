@@ -1,0 +1,110 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-11-27T21:24:08.399Z",
+    "end": "2025-11-27T21:24:27.608Z",
+    "duration": 19209,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "0d7719dd-a73a-4e53-94c4-815b83893bad",
+      "title": "",
+      "fullFile": "cypress\\e2e\\add_produto_car.cy.js",
+      "file": "cypress\\e2e\\add_produto_car.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0830cbeb-8267-405b-9bc7-84ecf126a661",
+          "title": "Caso de teste: Adicionar produtos ao carrinho",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve adicionar dois produtos ao carrinho e validar todos os detalhes",
+              "fullTitle": "Caso de teste: Adicionar produtos ao carrinho Deve adicionar dois produtos ao carrinho e validar todos os detalhes",
+              "timedOut": null,
+              "duration": 18878,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "19669c74-b6ff-4d2e-827a-6a00f3f895fa",
+              "parentUUID": "0830cbeb-8267-405b-9bc7-84ecf126a661",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "19669c74-b6ff-4d2e-827a-6a00f3f895fa"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 18878,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "[status]_[datetime]-[name]",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": false
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "code": false,
+        "timestamp": "ddmmyyyy_HHmmss",
+        "reportFilename": "[status]_[datetime]-[name]",
+        "quiet": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
