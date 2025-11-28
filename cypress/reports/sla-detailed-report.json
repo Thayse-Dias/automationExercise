@@ -1,0 +1,36 @@
+{
+  "timestamp": "2025-11-28T14:07:43.551Z",
+  "sla_config": {
+    "PAGE_LOAD": 15000,
+    "NAVIGATION": 15000,
+    "ACTION_RESPONSE": 15000,
+    "API_RESPONSE": 5000,
+    "UPTIME": 99.9,
+    "ERROR_RATE": 1,
+    "FIRST_CONTENTFUL_PAINT": 4000,
+    "LARGEST_CONTENTFUL_PAINT": 8000,
+    "CUMULATIVE_LAYOUT_SHIFT": 0.2
+  },
+  "metrics": {
+    "pageLoadTimes": [
+      5935
+    ],
+    "navigationTimes": [
+      6989,
+      7958,
+      12919
+    ],
+    "actionTimes": [
+      9369,
+      9579
+    ],
+    "errors": [],
+    "warnings": []
+  },
+  "summary": {
+    "total_operations": 6,
+    "success_rate": "100.00%",
+    "average_performance": "8791.50ms",
+    "environment": "CI"
+  }
+}

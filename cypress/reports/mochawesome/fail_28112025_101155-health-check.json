@@ -1,0 +1,245 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 7,
+    "passes": 2,
+    "pending": 0,
+    "failures": 5,
+    "start": "2025-11-28T13:43:18.456Z",
+    "end": "2025-11-28T13:45:55.278Z",
+    "duration": 156822,
+    "testsRegistered": 7,
+    "passPercent": 28.57142857142857,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7a630960-7ae8-4aee-a357-c5a372ea641f",
+      "title": "",
+      "fullFile": "cypress\\e2e\\health-check.cy.js",
+      "file": "cypress\\e2e\\health-check.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "65a2edae-e107-4032-8d81-834751990a56",
+          "title": "Health Checks - AutomationExercise",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "SLA - Page Load Performance",
+              "fullTitle": "Health Checks - AutomationExercise SLA - Page Load Performance",
+              "timedOut": null,
+              "duration": 12200,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {
+                "message": "AssertionError: ❌ SLA VIOLATION: Page load exceeded 5000ms: expected 8894 to be below 5000",
+                "estack": "AssertionError: ❌ SLA VIOLATION: Page load exceeded 5000ms: expected 8894 to be below 5000\n    at Context.eval (https://automationexercise.com/__cypress/tests?p=cypress\\e2e\\health-check.cy.js:60:40)",
+                "diff": "- 8894\n+ 5000\n"
+              },
+              "uuid": "020a14ed-ddcc-41e6-a28b-7373b540eae3",
+              "parentUUID": "65a2edae-e107-4032-8d81-834751990a56",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "SLA - Critical Functionality Response Times",
+              "fullTitle": "Health Checks - AutomationExercise SLA - Critical Functionality Response Times",
+              "timedOut": null,
+              "duration": 11353,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {
+                "message": "AssertionError: ❌ SLA VIOLATION: Login navigation exceeded 3000ms: expected 10178 to be below 3000",
+                "estack": "AssertionError: ❌ SLA VIOLATION: Login navigation exceeded 3000ms: expected 10178 to be below 3000\n    at Context.eval (https://automationexercise.com/__cypress/tests?p=cypress\\e2e\\health-check.cy.js:101:40)",
+                "diff": "- 10178\n+ 3000\n"
+              },
+              "uuid": "2d3a01d9-7c65-4b0a-9cec-f29af990f588",
+              "parentUUID": "65a2edae-e107-4032-8d81-834751990a56",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "SLA - Form Interaction Performance",
+              "fullTitle": "Health Checks - AutomationExercise SLA - Form Interaction Performance",
+              "timedOut": null,
+              "duration": 18318,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {
+                "message": "AssertionError: ❌ SLA VIOLATION: Form input response exceeded 2000ms: expected 12446 to be below 2000",
+                "estack": "AssertionError: ❌ SLA VIOLATION: Form input response exceeded 2000ms: expected 12446 to be below 2000\n    at Context.eval (https://automationexercise.com/__cypress/tests?p=cypress\\e2e\\health-check.cy.js:139:36)",
+                "diff": "- 12446\n+ 2000\n"
+              },
+              "uuid": "fa0fc84b-26b1-44a5-8e8e-078e1f07b105",
+              "parentUUID": "65a2edae-e107-4032-8d81-834751990a56",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "SLA - Availability and Error Monitoring",
+              "fullTitle": "Health Checks - AutomationExercise SLA - Availability and Error Monitoring",
+              "timedOut": null,
+              "duration": 8821,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {
+                "message": "TypeError: interceptions.filter is not a function",
+                "estack": "TypeError: interceptions.filter is not a function\n    at Context.eval (https://automationexercise.com/__cypress/tests?p=cypress\\e2e\\health-check.cy.js:172:52)",
+                "diff": null
+              },
+              "uuid": "df6f41f0-ca52-4ec7-a434-b891eaa20d6d",
+              "parentUUID": "65a2edae-e107-4032-8d81-834751990a56",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "SLA - Content and Feature Availability",
+              "fullTitle": "Health Checks - AutomationExercise SLA - Content and Feature Availability",
+              "timedOut": null,
+              "duration": 19935,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "49e02083-0ff6-46f4-8060-f862d5c0ec74",
+              "parentUUID": "65a2edae-e107-4032-8d81-834751990a56",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "SLA - Generate Performance Report",
+              "fullTitle": "Health Checks - AutomationExercise SLA - Generate Performance Report",
+              "timedOut": null,
+              "duration": 3758,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "db5567f3-d5be-48c9-9b4e-f00daa20ee63",
+              "parentUUID": "65a2edae-e107-4032-8d81-834751990a56",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "SLA - Continuous Performance Monitoring",
+              "fullTitle": "Health Checks - AutomationExercise SLA - Continuous Performance Monitoring",
+              "timedOut": null,
+              "duration": 11555,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {
+                "message": "AssertionError: ❌ SLA VIOLATION: Iteration 1 load time inconsistent: expected 8344 to be below 7500",
+                "estack": "AssertionError: ❌ SLA VIOLATION: Iteration 1 load time inconsistent: expected 8344 to be below 7500\n    at Context.eval (https://automationexercise.com/__cypress/tests?p=cypress\\e2e\\health-check.cy.js:248:43)",
+                "diff": "- 8344\n+ 7500\n"
+              },
+              "uuid": "a435b345-06f4-484c-82fb-8dfdb24a742b",
+              "parentUUID": "65a2edae-e107-4032-8d81-834751990a56",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "49e02083-0ff6-46f4-8060-f862d5c0ec74",
+            "db5567f3-d5be-48c9-9b4e-f00daa20ee63"
+          ],
+          "failures": [
+            "020a14ed-ddcc-41e6-a28b-7373b540eae3",
+            "2d3a01d9-7c65-4b0a-9cec-f29af990f588",
+            "fa0fc84b-26b1-44a5-8e8e-078e1f07b105",
+            "df6f41f0-ca52-4ec7-a434-b891eaa20d6d",
+            "a435b345-06f4-484c-82fb-8dfdb24a742b"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 85940,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "[status]_[datetime]-[name]",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": false
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mochawesome",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "code": false,
+        "timestamp": "ddmmyyyy_HHmmss",
+        "reportFilename": "[status]_[datetime]-[name]",
+        "quiet": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
